@@ -21,17 +21,12 @@ Table 1 Stock attributes name, categoryID, price, thumbnail, bigphoto, topline a
 # Complex Queries
 # Query 1 – SQL Partitions ( LIST Partitioning )
 
-CREATE TABLE sale_mast2 (
-
-   bill_no INT NOT NULL,
-     
-   bill_date TIMESTAMP NOT NULL,
-     
-   agent_codE INT NOT NULL,
-     
-   amount INT NOT NULL
-     
-) 
+      CREATE TABLE sale_mast2 (
+         bill_no INT NOT NULL,
+         bill_date TIMESTAMP NOT NULL,
+         agent_codE INT NOT NULL,
+         amount INT NOT NULL
+      ) 
 
 PARTITION  BY LIST(agent_code) (
 
