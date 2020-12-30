@@ -5,7 +5,7 @@ This database is all about managing stocks and every stock category. Every stock
 
 ![image](https://user-images.githubusercontent.com/73202856/103324269-c28a1d00-4a81-11eb-9f65-046df58f9b82.png)
 
-Database source is from Phil Adams in his youtube video tutorials on how to create a dynamic site using PHP and mySQL. Here is the link of the video:
+Database source is from Phil Adams in his youtube video tutorials on how to create a dynamic site using PHP and mySQL.
 
 Stock Table – contains stockID, name, categoryID, price, thumbnail, bigphoto, topline and description attributes. StockID is the primary key which holds a unique key of every stock, name which holds the full name of the stock, categoryID is a foreign key that also holds a unique but from the other table, price which holds the sale price of the prodyct, thumbnail and bigphoto which holds pictures of the product, topline that suggests where to wore the product and lastly its every description that tells about its quality.
 
