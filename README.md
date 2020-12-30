@@ -6,6 +6,7 @@ This database is all about managing stocks and every stock category. Every stock
 ![image](https://user-images.githubusercontent.com/73202856/103324269-c28a1d00-4a81-11eb-9f65-046df58f9b82.png)
 
 Database source is from Phil Adams in his youtube video tutorials on how to create a dynamic site using PHP and mySQL. Here is the link of the video:
+
 https://www.dropbox.com/sh/jbe5ai9wkn...
 
 Stock Table – contains stockID, name, categoryID, price, thumbnail, bigphoto, topline and description attributes. StockID is the primary key which holds a unique key of every stock, name which holds the full name of the stock, categoryID is a foreign key that also holds a unique but from the other table, price which holds the sale price of the prodyct, thumbnail and bigphoto which holds pictures of the product, topline that suggests where to wore the product and lastly its every description that tells about its quality.
@@ -34,7 +35,7 @@ Table 1 Stock attributes name, categoryID, price, thumbnail, bigphoto, topline a
      )
      ; 
 
-- there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
+– there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
 
 IMPORTANCE
 
@@ -59,7 +60,7 @@ OUTPUT:
       )
       ;
 
-- in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
+– in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
 
 IMPORTANCE
 
@@ -87,7 +88,7 @@ OUTPUT:
       )
       ;
 
-- table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
+– table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
 
 IMPORTANCE
 
@@ -103,7 +104,7 @@ OUTPUT:
       OVER ( partition by subjects order by mark desc )
       AS ‘dense_mark’ FROM result;
 
-- dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
+– dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
 
 IMPORTANCE
 
@@ -125,7 +126,7 @@ After
       OVER ( partition by subjects order by mark desc )
       AS ‘rank’ FROM result; 
 
-- rank(). It’s output is similar to dense_rank() function. Except, that for Science subject in case of a tie between Ankita and Pratibha, the next rank value is incremented by 2 i.e 3 for Swarna.
+– rank(). It’s output is similar to dense_rank() function. Except, that for Science subject in case of a tie between Ankita and Pratibha, the next rank value is incremented by 2 i.e 3 for Swarna.
 
 IMPORTANCE
 
@@ -147,7 +148,7 @@ After
       OVER ( partition by subjects order by mark )
       AS ‘percent_rank’ FROM result;
 
-- percent_rank(). The percent_rank() function calculate percentile rank in ascending order by “mark” column. rank is the rank of each row of the partition resulted using rank() function. rows represent the no of rows in that partition.
+– percent_rank(). The percent_rank() function calculate percentile rank in ascending order by “mark” column. rank is the rank of each row of the partition resulted using rank() function. rows represent the no of rows in that partition.
 
 IMPORTANCE
 
@@ -167,7 +168,7 @@ After
 
       CREATE TRIGGER `insertLog` AFTER INSERT ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'Inserted', NOW());
 
-- creates a Trigger in the designated table that registers the inserted data into the logs whenever an insert event had happened.
+– creates a Trigger in the designated table that registers the inserted data into the logs whenever an insert event had happened.
 
 IMPORTANCE
 
@@ -187,7 +188,7 @@ Then see if the data matches with the logs table:
 
       CREATE TRIGGER `updateLog` AFTER UPDATE ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'updated', NOW());
 
-- creates a Trigger in the designated table that registers the updated data into the logs whenever an update event had happened.
+– creates a Trigger in the designated table that registers the updated data into the logs whenever an update event had happened.
 
 IMPORTANCE
 
@@ -207,7 +208,7 @@ See logs table if update event is correct:
 
       CREATE TRIGGER 'deleteLog' BEFORE INSERT ON 'authors' FOR EACH ROW INSERT INTO logs VALUES(null, OLD.id, 'Deleted', NOW());
 
-- creates a Trigger in the designated table that registers the deleted data into the logs whenever a delete event had happened.
+– creates a Trigger in the designated table that registers the deleted data into the logs whenever a delete event had happened.
 
 IMPORTANCE
 
@@ -224,7 +225,7 @@ Delete any data in the table where the Trigger is created then see if its record
       DELETE FROM Student WHERE AGE = 20;
       COMMIT;
 
-- this query deletes the records from the table which have age = 20 and then COMMIT the changes in the database.
+– this query deletes the records from the table which have age = 20 and then COMMIT the changes in the database.
 
 IMPORTANCE
 
@@ -250,7 +251,7 @@ After
       FROM ' + @tab;
       EXEC sp_executesql @st;
 
-- selects the data from a complex table ( these are SQL Server Syntax ).
+– selects the data from a complex table ( these are SQL Server Syntax ).
 
 IMPORTANCE
 
@@ -264,7 +265,7 @@ OUTPUT:
 
       DROP VIEW Skirts;
 
-- deletes the view you created.
+– deletes the view you created.
 
 IMPORTANCE
 
@@ -281,7 +282,7 @@ OUTPUT:
       FROM stock
       WHERE categoryID = '1';
 
-- replaces the created VIEW with another VIEW on the above command.
+– replaces the created VIEW with another VIEW on the above command.
 
 IMPORTANCE
 
@@ -298,7 +299,7 @@ OUTPUT:
       FROM stock
       WHERE categoryID = '1';
 
-- creates a virtual table to view all stock that has categoryID that is equal to 1.
+– creates a virtual table to view all stock that has categoryID that is equal to 1.
 
 IMPORTANCE
 
@@ -312,7 +313,7 @@ OUTPUT:
 
       SP_DEPENDS SelectGeek ;
 
-- will show where the procedure is dependent like name of tables, functions, etc.
+– will show where the procedure is dependent like name of tables, functions, etc.
 
 IMPORTANCE
 
@@ -326,7 +327,7 @@ OUTPUT:
 
       SP_HELPTEXT SelectGeek ;
 
-- will display the content of the stored procedure as result.
+– will display the content of the stored procedure as result.
 
 IMPORTANCE
 
@@ -338,9 +339,9 @@ OUTPUT:
 
 # Query 17 – Stored Procedure
 
-SP_HELP SelectGeek ;
+      SP_HELP SelectGeek ;
 
-- will display the Stored procedure Name, Schema Name, created date, and Time or if there are any parameters, then Parameter Name, Data Type, Length, Precision, Scale, Collation, etc. as result.
+– will display the Stored procedure Name, Schema Name, created date, and Time or if there are any parameters, then Parameter Name, Data Type, Length, Precision, Scale, Collation, etc. as result.
 
 IMPORTANCE
 
@@ -366,9 +367,9 @@ OUTPUT:
 
 //Call the stored procedure
 
-EXEC SelectGeek ;
+      EXEC SelectGeek ;
 
-- creates a simple stored procure that holds two Select statements inside it from the selected table.
+– creates a simple stored procure that holds two Select statements inside it from the selected table.
 
 IMPORTANCE
 
@@ -386,19 +387,19 @@ Stored Procedure
 
 # Query 19 – SQL Transactions
 
-SAVEPOINT SP1;
+      SAVEPOINT SP1;
 
 //Savepoint created.
 
-DELETE FROM Student WHERE AGE = 20;
+      DELETE FROM Student WHERE AGE = 20;
 
 //deleted
 
-SAVEPOINT SP2;
+      SAVEPOINT SP2;
 
 //Savepoint created.
 
--  SP1 is the first SAVEPOINT created before deletion then after deletion, SAVEPOINT SP2 is created.
+–  SP1 is the first SAVEPOINT created before deletion then after deletion, SAVEPOINT SP2 is created.
 
 IMPORTANCE
 
@@ -413,7 +414,7 @@ OUTPUT:
       DELETE FROM Student WHERE AGE = 20;
       ROLLBACK;
 
-- deleted records will be specifically retrieved back in the database.
+– deleted records will be specifically retrieved back in the database.
 
 IMPORTANCE
 
