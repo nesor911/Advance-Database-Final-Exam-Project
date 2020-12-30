@@ -194,9 +194,11 @@ Automatically records any update event happened on the table where the Trigger i
 OUTPUT:
 
 Update Data:
+
 ![image](https://user-images.githubusercontent.com/73202856/103324901-388f8380-4a84-11eb-9211-4880f1689888.png)
 
 See logs table if update event is correct:
+
 ![image](https://user-images.githubusercontent.com/73202856/103324917-42b18200-4a84-11eb-9eb9-64fcb6d872f0.png)
 
 # Query 9 – SQL Trigger
