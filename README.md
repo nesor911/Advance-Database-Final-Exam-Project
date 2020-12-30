@@ -35,7 +35,7 @@ PARTITION  BY LIST(agent_code) (
 )
 ; 
 
-- there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
+– there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
 
 # Importance
 List partition allows us to segment data based on a pre-defined set of values (e.g. 1, 2, 3), this is done by using PARTITION BY LIST(expr) where expr is a column value and then defining each partition by means of a VALUES IN (value_list), where value_list is a comma-separated list of integers.
@@ -58,7 +58,7 @@ PARTITION BY LIST COLUMNS(agent_id) (
 )
 ;
 
-- in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
+– in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
 
 # Importance
 LIST COLUMNS accepts a list of one or more columns as partition keys, you can also use various columns of data of types other than integer types as partitioning columns.
@@ -84,7 +84,7 @@ SUBPARTITIONS 4 (
 )
 ;
 
-- table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
+– table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
 
 # Importance
 Subpartitioning is a method to divide each partition further in a partitioned table.
@@ -98,7 +98,7 @@ SELECT subjects, s_name, mark, dense_rank()
 OVER ( partition by subjects order by mark desc )
 AS ‘dense_mark’ FROM result;
 
-- dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
+– dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
 
 # Importance
 This function will assign rank to each row within a partition without gaps. The ranks are assigned in a consecutive manner, if there is a tie between values then they will be assigned the same rank, and next rank value will be one greater then the previous rank assigned.
