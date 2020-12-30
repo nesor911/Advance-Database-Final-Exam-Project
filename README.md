@@ -214,7 +214,7 @@ OUTPUT:
 
 Delete any data in the table where the Trigger is created then see if its recorded in the appointed table:
 
-![image](https://user-images.githubusercontent.com/73202856/103324941-5e1c8d00-4a84-11eb-8408-bcd1f439d313.pnG)
+![image](https://user-images.githubusercontent.com/73202856/103324941-5e1c8d00-4a84-11eb-8408-bcd1f439d313.png)
 
 # Query 10 – SQL Transactions
 
