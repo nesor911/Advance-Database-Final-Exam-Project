@@ -174,9 +174,11 @@ Automatically registers any insert event happened on the table where the Trigger
 OUTPUT:
 
 Insert data:
+
 ![image](https://user-images.githubusercontent.com/73202856/103324871-1564d400-4a84-11eb-9a41-bb82443ca015.png)
 
 Then see if the data matches with the logs table:
+
 ![image](https://user-images.githubusercontent.com/73202856/103324879-21509600-4a84-11eb-8b80-1b0ab6b62609.png)
 
 # Query 8 – SQL Trigger
