@@ -134,9 +134,11 @@ This function will assign rank to each row within a partition with gaps. Ranks a
 OUTPUT
 
 Before
+
 ![image](https://user-images.githubusercontent.com/73202856/103324719-a5564e00-4a83-11eb-8aca-cd41f1852d84.png)
 
 After
+
 ![image](https://user-images.githubusercontent.com/73202856/103324728-b1daa680-4a83-11eb-81b9-a9ef712338ed.png)
 
 # Query 6 – SQL Ranking Function
@@ -152,9 +154,11 @@ It returns the percentile rank of a row within a partition that ranges from 0 to
 OUTPUT:
 
 Before
+
 ![image](https://user-images.githubusercontent.com/73202856/103324812-e8b0bc80-4a83-11eb-9f5c-c35003b8fead.png)
 
 After
+
 ![image](https://user-images.githubusercontent.com/73202856/103324840-f49c7e80-4a83-11eb-99bd-8f24276c2fd9.png)
 
 # Query 7 – SQL Trigger
@@ -221,9 +225,11 @@ If everything is in order with all statements within a single transaction, all c
 OUTPUT:
 
 Before
+
 ![image](https://user-images.githubusercontent.com/73202856/103324968-7db3b580-4a84-11eb-8eac-ff6761b36047.png)
 
 After
+
 ![image](https://user-images.githubusercontent.com/73202856/103324975-8906e100-4a84-11eb-8d84-7553c66a5396.png)
 
 # Query 11 – Dynamic Query
@@ -359,9 +365,11 @@ Creates a stored procedure that you can save, so the code can be reused over and
 OUTPUT:
 
 Selected Table
+
 ![image](https://user-images.githubusercontent.com/73202856/103325341-6675c780-4a86-11eb-967d-1e26bc9a1ae3.png)
 
 Stored Procedure
+
 ![image](https://user-images.githubusercontent.com/73202856/103325350-6e356c00-4a86-11eb-80de-0aada52c46e5.png)
 
 # Query 19 – SQL Transactions
