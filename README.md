@@ -38,9 +38,11 @@ PARTITION  BY LIST(agent_code) (
 - there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
 
 IMPORTANCE
+
 List partition allows us to segment data based on a pre-defined set of values (e.g. 1, 2, 3), this is done by using PARTITION BY LIST(expr) where expr is a column value and then defining each partition by means of a VALUES IN (value_list), where value_list is a comma-separated list of integers.
 
 OUTPUT:
+
 ![image](https://user-images.githubusercontent.com/73202856/103324480-a8047380-4a82-11eb-965b-469fe6134802.png)
 
 # Query 2 – SQL Partitions  ( LIST COLUMNS Partitioning )
