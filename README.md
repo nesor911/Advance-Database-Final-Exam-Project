@@ -35,7 +35,7 @@ PARTITION  BY LIST(agent_code) (
 )
 ; 
 
-– there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
+- there are 11 agents that represents three cities, A, B and C, and it is arranged in three partitions with LIST Partitioning.
 
 # Importance
 List partition allows us to segment data based on a pre-defined set of values (e.g. 1, 2, 3), this is done by using PARTITION BY LIST(expr) where expr is a column value and then defining each partition by means of a VALUES IN (value_list), where value_list is a comma-separated list of integers.
@@ -58,7 +58,7 @@ PARTITION BY LIST COLUMNS(agent_id) (
 )
 ;
 
-– in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
+- in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
 
 # Importance
 LIST COLUMNS accepts a list of one or more columns as partition keys, you can also use various columns of data of types other than integer types as partitioning columns.
@@ -84,7 +84,7 @@ SUBPARTITIONS 4 (
 )
 ;
 
-– table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
+- table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
 
 # Importance
 Subpartitioning is a method to divide each partition further in a partitioned table.
@@ -98,7 +98,7 @@ SELECT subjects, s_name, mark, dense_rank()
 OVER ( partition by subjects order by mark desc )
 AS ‘dense_mark’ FROM result;
 
-– dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
+- dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
 
 # Importance
 This function will assign rank to each row within a partition without gaps. The ranks are assigned in a consecutive manner, if there is a tie between values then they will be assigned the same rank, and next rank value will be one greater then the previous rank assigned.
@@ -214,3 +214,165 @@ Before
 
 After
 ![image](https://user-images.githubusercontent.com/73202856/103324975-8906e100-4a84-11eb-8d84-7553c66a5396.png)
+
+# Query 11 – Dynamic Query
+
+DECLARE 
+@tab NVARCHAR(128), 
+@st NVARCHAR(MAX);
+SET @tab = N'geektable';
+SET @st = N'SELECT * 
+FROM ' + @tab;
+EXEC sp_executesql @st;
+
+- selects the data from a complex table ( these are SQL Server Syntax ).
+
+# Importance
+Using Dynamic SQL is less swift and efficient but is flexible, often used in old and very complex database.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325172-8789e880-4a85-11eb-9706-ab0e4ad2f39d.png)
+
+# Query 12 – SQL Views
+
+DROP VIEW Skirts;
+
+- deletes the view you created.
+
+# Importance
+When mistakes are made you can easily drop a VIEW.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325189-9e303f80-4a85-11eb-8c20-5c9d8a824714.png)
+
+# Query 13 – SQL Views ( Updating Views )
+
+CREATE OR REPLACE VIEW Skirts AS
+SELECT StockID, name, topline
+FROM stock
+WHERE categoryID = '1';
+
+- replaces the created VIEW with another VIEW on the above command.
+
+# Importance
+Updating or replacing a VIEW is important, specially when adding or deleting viewing data.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325216-c029c200-4a85-11eb-9e95-16abb86cf8e6.png)
+
+# Query 14 – SQL Views
+
+CREATE VIEW Skirts AS
+SELECT StockID, name
+FROM stock
+WHERE categoryID = '1';
+
+- creates a virtual table to view all stock that has categoryID that is equal to 1.
+
+# Importance
+Creates a viewing table that cointains data without having to create a real table.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325238-ddf72700-4a85-11eb-9048-931cfcedccfe.png)
+
+# Query 15 – Store Procedure
+
+SP_DEPENDS SelectGeek ;
+
+- will show where the procedure is dependent like name of tables, functions, etc.
+
+# Importance
+Depencies will be quickly identified, making dependency diagrams relatively easy.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325261-f6ffd800-4a85-11eb-8393-2d8636eec536.png)
+
+# Query 16 – Stored Procedure
+
+SP_HELPTEXT SelectGeek ;
+
+- will display the content of the stored procedure as result.
+
+# Importance
+You can easily generate back the queries used in the creation of the Stored Procedure.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325293-1eef3b80-4a86-11eb-9a99-81eb23644ec6.png)
+
+# Query 17 – Stored Procedure
+
+SP_HELP SelectGeek ;
+
+- will display the Stored procedure Name, Schema Name, created date, and Time or if there are any parameters, then Parameter Name, Data Type, Length, Precision, Scale, Collation, etc. as result.
+
+# Importance
+Specific detail of the creation of  a store procedure can be seen.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325318-3f1efa80-4a86-11eb-810d-0dc496e75664.png)
+
+# Query 18 – Stored Procedure
+
+CREATE PROCEDURE SelectGeek
+AS
+BEGIN
+SELECT TOP 3 [Name], [City], [Salary]
+FROM [geek_demo]
+ORDER BY [Salary] ASC
+SELECT TOP 3 [Name], [City], [Salary]
+FROM [geek_demo]
+ORDER BY [Salary] DESC
+END
+GO;
+
+//Call the stored procedure
+
+EXEC SelectGeek ;
+
+- creates a simple stored procure that holds two Select statements inside it from the selected table.
+
+# Importance
+Creates a stored procedure that you can save, so the code can be reused over and over again.
+
+# Output:
+
+Selected Table
+![image](https://user-images.githubusercontent.com/73202856/103325341-6675c780-4a86-11eb-967d-1e26bc9a1ae3.png)
+
+Stored Procedure
+![image](https://user-images.githubusercontent.com/73202856/103325350-6e356c00-4a86-11eb-80de-0aada52c46e5.png)
+
+# Query 19 – SQL Transactions
+
+SAVEPOINT SP1;
+
+//Savepoint created.
+
+DELETE FROM Student WHERE AGE = 20;
+
+//deleted
+
+SAVEPOINT SP2;
+
+//Savepoint created.
+
+-  SP1 is the first SAVEPOINT created before deletion then after deletion, SAVEPOINT SP2 is created.
+
+# Importance
+A SAVEPOINT is a point in a transaction in which you can roll the transaction back to a certain point without rolling back the entire transaction. 
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325380-8f965800-4a86-11eb-9522-3a58f3d042ae.png)
+
+# Query 20 – SQL Transactions
+
+DELETE FROM Student WHERE AGE = 20;
+ROLLBACK;
+
+- deleted records will be specifically retrieved back in the database.
+
+# Importance
+If any error occurs with any of the SQL grouped statements, all changes need to be aborted. The process of reversing changes is called rollback.
+
+# Output:
+![image](https://user-images.githubusercontent.com/73202856/103325393-a50b8200-4a86-11eb-8867-260e52853333.png)
