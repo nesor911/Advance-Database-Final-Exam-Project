@@ -92,7 +92,7 @@ Subpartitioning is a method to divide each partition further in a partitioned ta
 # Output:
 ![image](https://user-images.githubusercontent.com/73202856/103324614-3bd63f80-4a83-11eb-9362-8d06e4267e24.png)
 
-# uery 4 - SQL Ranking Function
+# Query 4 - SQL Ranking Function
 
 SELECT subjects, s_name, mark, dense_rank()
 OVER ( partition by subjects order by mark desc )
@@ -105,9 +105,13 @@ This function will assign rank to each row within a partition without gaps. The 
 
 # Output:
 
-Before ![image](https://user-images.githubusercontent.com/73202856/103324672-7fc94480-4a83-11eb-8bd9-fb42163719ee.png)
+Before
 
-After ![image](https://user-images.githubusercontent.com/73202856/103324679-8788e900-4a83-11eb-91f1-4cf21b5bc157.png)
+![image](https://user-images.githubusercontent.com/73202856/103324672-7fc94480-4a83-11eb-8bd9-fb42163719ee.png)
+
+After
+
+![image](https://user-images.githubusercontent.com/73202856/103324679-8788e900-4a83-11eb-91f1-4cf21b5bc157.png)
 
 # Query 5 - SQL Ranking Function
 
