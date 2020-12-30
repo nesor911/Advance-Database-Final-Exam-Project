@@ -23,23 +23,23 @@ Table 1 Stock attributes name, categoryID, price, thumbnail, bigphoto, topline a
 
 CREATE TABLE sale_mast2 (
 
-     bill_no INT NOT NULL,
+   bill_no INT NOT NULL,
      
-     bill_date TIMESTAMP NOT NULL,
+   bill_date TIMESTAMP NOT NULL,
      
-     agent_codE INT NOT NULL,
+   agent_codE INT NOT NULL,
      
-     amount INT NOT NULL
+   amount INT NOT NULL
      
 ) 
 
 PARTITION  BY LIST(agent_code) (
 
-     PARTITION pA VALUES IN (1,2,3), 
+   PARTITION pA VALUES IN (1,2,3), 
      
-     PARTITION pB VALUES IN (4,5,6), 
+   PARTITION pB VALUES IN (4,5,6), 
      
-     PARTITION pC VALUES IN (7,8,9,10,11
+   PARTITION pC VALUES IN (7,8,9,10,11
      
 )
 
