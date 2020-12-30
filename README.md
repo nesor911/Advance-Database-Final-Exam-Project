@@ -365,7 +365,7 @@ OUTPUT:
       END
       GO;
 
-//Call the stored procedure
+Call the stored procedure
 
       EXEC SelectGeek ;
 
@@ -389,15 +389,15 @@ Stored Procedure
 
       SAVEPOINT SP1;
 
-//Savepoint created.
+Savepoint created.
 
       DELETE FROM Student WHERE AGE = 20;
 
-//deleted
+Deleted
 
       SAVEPOINT SP2;
 
-//Savepoint created.
+Savepoint created.
 
 –  SP1 is the first SAVEPOINT created before deletion then after deletion, SAVEPOINT SP2 is created.
 
