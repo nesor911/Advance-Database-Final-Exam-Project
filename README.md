@@ -46,18 +46,18 @@ OUTPUT:
 
 # Query 2 – SQL Partitions  ( LIST COLUMNS Partitioning )
 
-CREATE TABLE salemast (
-     agent_id VARCHAR(15),
-     agent_name VARCHAR(50), 
-     agent_address VARCHAR(100),
-     city_code VARCHAR(10)
-) 
-PARTITION BY LIST COLUMNS(agent_id) ( 
-     PARTITION pcity_a VALUES IN('A1', 'A2', 'A3'), 
-     PARTITION pcity_b VALUES IN('B1', 'B2', 'B3'), 
-     PARTITION pcity_c VALUES IN ('C1', 'C2', 'C3', 'C4', 'C5')
-)
-;
+      CREATE TABLE salemast (
+            agent_id VARCHAR(15),
+            agent_name VARCHAR(50), 
+            agent_address VARCHAR(100),
+            city_code VARCHAR(10)
+      ) 
+      PARTITION BY LIST COLUMNS(agent_id) ( 
+            PARTITION pcity_a VALUES IN('A1', 'A2', 'A3'), 
+            PARTITION pcity_b VALUES IN('B1', 'B2', 'B3'), 
+            PARTITION pcity_c VALUES IN ('C1', 'C2', 'C3', 'C4', 'C5')
+      )
+      ;
 
 - in a company there are agents in 3 cities, for sales and marketing purposes, with this we organized those agents in these 3 cities.
 
@@ -71,21 +71,21 @@ OUTPUT:
 
 # Query 3 - SQL Partitions ( Subpartitioning )
 
-CREATE TABLE table10 (
-     BILL_NO INT,
-     sale_date DATE,
-     cust_code VARCHAR(15), 
-     AMOUNT DECIMAL(8,2)
-)
-PARTITION BY RANGE(YEAR (sale_date))
-SUBPARTITION BY HASH(TO_DAYS (sale_date))
-SUBPARTITIONS 4 (
-     PARTITION p0 VALUES LESS THAN (1990),
-     PARTITION p1 VALUES LESS THAN (2000),
-     PARTITION p2 VALUES LESS THAN (2010),
-     PARTITION p3 VALUES LESS THAN MAXVALUE
-)
-;
+      CREATE TABLE table10 (
+            BILL_NO INT,
+            sale_date DATE,
+            cust_code VARCHAR(15), 
+            AMOUNT DECIMAL(8,2)
+      )
+      PARTITION BY RANGE(YEAR (sale_date))
+      SUBPARTITION BY HASH(TO_DAYS (sale_date))
+      SUBPARTITIONS 4 (
+            PARTITION p0 VALUES LESS THAN (1990),
+            PARTITION p1 VALUES LESS THAN (2000),
+            PARTITION p2 VALUES LESS THAN (2010),
+            PARTITION p3 VALUES LESS THAN MAXVALUE
+      )
+      ;
 
 - table has 4 RANGE partitions and each of these partitions; p0, p1, p2 and p3 is further divided into 4 subpartitions, therefore the table is divided into 4 x 4 = 16 partitions.
 
@@ -99,9 +99,9 @@ OUTPUT:
 
 # Query 4 - SQL Ranking Function
 
-SELECT subjects, s_name, mark, dense_rank()
-OVER ( partition by subjects order by mark desc )
-AS ‘dense_mark’ FROM result;
+      SELECT subjects, s_name, mark, dense_rank()
+      OVER ( partition by subjects order by mark desc )
+      AS ‘dense_mark’ FROM result;
 
 - dense_rank(). Table is partitioned on the basis of “subjects”. order by clause is used to arrange rows of each partition in descending order by “mark”. dense_rank() is used to rank students in each subject.
 
@@ -121,9 +121,9 @@ After
 
 # Query 5 - SQL Ranking Function
 
-SELECT subjects, s_name, mark, rank()
-OVER ( partition by subjects order by mark desc )
-AS ‘rank’ FROM result; 
+      SELECT subjects, s_name, mark, rank()
+      OVER ( partition by subjects order by mark desc )
+      AS ‘rank’ FROM result; 
 
 - rank(). It’s output is similar to dense_rank() function. Except, that for Science subject in case of a tie between Ankita and Pratibha, the next rank value is incremented by 2 i.e 3 for Swarna.
 
@@ -142,9 +142,11 @@ After
 ![image](https://user-images.githubusercontent.com/73202856/103324728-b1daa680-4a83-11eb-81b9-a9ef712338ed.png)
 
 # Query 6 – SQL Ranking Function
-SELECT subjects, s_name, mark, percent_rank()
-OVER ( partition by subjects order by mark )
-AS ‘percent_rank’ FROM result;
+
+      SELECT subjects, s_name, mark, percent_rank()
+      OVER ( partition by subjects order by mark )
+      AS ‘percent_rank’ FROM result;
+
 - percent_rank(). The percent_rank() function calculate percentile rank in ascending order by “mark” column. rank is the rank of each row of the partition resulted using rank() function. rows represent the no of rows in that partition.
 
 IMPORTANCE
@@ -163,7 +165,7 @@ After
 
 # Query 7 – SQL Trigger
 
-CREATE TRIGGER `insertLog` AFTER INSERT ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'Inserted', NOW());
+      CREATE TRIGGER `insertLog` AFTER INSERT ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'Inserted', NOW());
 
 - creates a Trigger in the designated table that registers the inserted data into the logs whenever an insert event had happened.
 
@@ -183,7 +185,7 @@ Then see if the data matches with the logs table:
 
 # Query 8 – SQL Trigger
 
-CREATE TRIGGER `updateLog` AFTER UPDATE ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'updated', NOW());
+      CREATE TRIGGER `updateLog` AFTER UPDATE ON `authors` FOR EACH ROW INSERT INTO logs VALUES(null, NEW.id, 'updated', NOW());
 
 - creates a Trigger in the designated table that registers the updated data into the logs whenever an update event had happened.
 
@@ -203,11 +205,12 @@ See logs table if update event is correct:
 
 # Query 9 – SQL Trigger
 
-CREATE TRIGGER 'deleteLog' BEFORE INSERT ON 'authors' FOR EACH ROW INSERT INTO logs VALUES(null, OLD.id, 'Deleted', NOW());
+      CREATE TRIGGER 'deleteLog' BEFORE INSERT ON 'authors' FOR EACH ROW INSERT INTO logs VALUES(null, OLD.id, 'Deleted', NOW());
 
 - creates a Trigger in the designated table that registers the deleted data into the logs whenever a delete event had happened.
 
 IMPORTANCE
+
 Automatically records delete data on the table the Trigger is created into the designated table thus making any delete event recorded.
 
 OUTPUT:
@@ -218,8 +221,8 @@ Delete any data in the table where the Trigger is created then see if its record
 
 # Query 10 – SQL Transactions
 
-DELETE FROM Student WHERE AGE = 20;
-COMMIT;
+      DELETE FROM Student WHERE AGE = 20;
+      COMMIT;
 
 - this query deletes the records from the table which have age = 20 and then COMMIT the changes in the database.
 
@@ -239,13 +242,13 @@ After
 
 # Query 11 – Dynamic Query
 
-DECLARE 
-@tab NVARCHAR(128), 
-@st NVARCHAR(MAX);
-SET @tab = N'geektable';
-SET @st = N'SELECT * 
-FROM ' + @tab;
-EXEC sp_executesql @st;
+      DECLARE 
+      @tab NVARCHAR(128), 
+      @st NVARCHAR(MAX);
+      SET @tab = N'geektable';
+      SET @st = N'SELECT * 
+      FROM ' + @tab;
+      EXEC sp_executesql @st;
 
 - selects the data from a complex table ( these are SQL Server Syntax ).
 
@@ -259,7 +262,7 @@ OUTPUT:
 
 # Query 12 – SQL Views
 
-DROP VIEW Skirts;
+      DROP VIEW Skirts;
 
 - deletes the view you created.
 
@@ -273,14 +276,15 @@ OUTPUT:
 
 # Query 13 – SQL Views ( Updating Views )
 
-CREATE OR REPLACE VIEW Skirts AS
-SELECT StockID, name, topline
-FROM stock
-WHERE categoryID = '1';
+      CREATE OR REPLACE VIEW Skirts AS
+      SELECT StockID, name, topline
+      FROM stock
+      WHERE categoryID = '1';
 
 - replaces the created VIEW with another VIEW on the above command.
 
 IMPORTANCE
+
 Updating or replacing a VIEW is important, specially when adding or deleting viewing data.
 
 OUTPUT:
@@ -289,26 +293,29 @@ OUTPUT:
 
 # Query 14 – SQL Views
 
-CREATE VIEW Skirts AS
-SELECT StockID, name
-FROM stock
-WHERE categoryID = '1';
+      CREATE VIEW Skirts AS
+      SELECT StockID, name
+      FROM stock
+      WHERE categoryID = '1';
 
 - creates a virtual table to view all stock that has categoryID that is equal to 1.
 
-# Importance
+IMPORTANCE
+
 Creates a viewing table that cointains data without having to create a real table.
 
-# Output:
+OUTPUT:
+
 ![image](https://user-images.githubusercontent.com/73202856/103325238-ddf72700-4a85-11eb-9048-931cfcedccfe.png)
 
 # Query 15 – Store Procedure
 
-SP_DEPENDS SelectGeek ;
+      SP_DEPENDS SelectGeek ;
 
 - will show where the procedure is dependent like name of tables, functions, etc.
 
 IMPORTANCE
+
 Depencies will be quickly identified, making dependency diagrams relatively easy.
 
 OUTPUT:
@@ -317,7 +324,7 @@ OUTPUT:
 
 # Query 16 – Stored Procedure
 
-SP_HELPTEXT SelectGeek ;
+      SP_HELPTEXT SelectGeek ;
 
 - will display the content of the stored procedure as result.
 
@@ -345,17 +352,17 @@ OUTPUT:
 
 # Query 18 – Stored Procedure
 
-CREATE PROCEDURE SelectGeek
-AS
-BEGIN
-SELECT TOP 3 [Name], [City], [Salary]
-FROM [geek_demo]
-ORDER BY [Salary] ASC
-SELECT TOP 3 [Name], [City], [Salary]
-FROM [geek_demo]
-ORDER BY [Salary] DESC
-END
-GO;
+      CREATE PROCEDURE SelectGeek
+      AS
+      BEGIN
+      SELECT TOP 3 [Name], [City], [Salary]
+      FROM [geek_demo]
+      ORDER BY [Salary] ASC
+      SELECT TOP 3 [Name], [City], [Salary]
+      FROM [geek_demo]
+      ORDER BY [Salary] DESC
+      END
+      GO;
 
 //Call the stored procedure
 
@@ -403,8 +410,8 @@ OUTPUT:
 
 # Query 20 – SQL Transactions
 
-DELETE FROM Student WHERE AGE = 20;
-ROLLBACK;
+      DELETE FROM Student WHERE AGE = 20;
+      ROLLBACK;
 
 - deleted records will be specifically retrieved back in the database.
 
