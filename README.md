@@ -105,11 +105,9 @@ This function will assign rank to each row within a partition without gaps. The 
 
 # Output:
 
-Before
-![image](https://user-images.githubusercontent.com/73202856/103324672-7fc94480-4a83-11eb-8bd9-fb42163719ee.png)
+Before ![image](https://user-images.githubusercontent.com/73202856/103324672-7fc94480-4a83-11eb-8bd9-fb42163719ee.png)
 
-After
-![image](https://user-images.githubusercontent.com/73202856/103324679-8788e900-4a83-11eb-91f1-4cf21b5bc157.png)
+After ![image](https://user-images.githubusercontent.com/73202856/103324679-8788e900-4a83-11eb-91f1-4cf21b5bc157.png)
 
 # Query 5 - SQL Ranking Function
 
