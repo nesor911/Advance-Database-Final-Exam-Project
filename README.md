@@ -3,7 +3,7 @@
 # Database Source
 This database is all about managing stocks and every stock category. Every stock has different name, description and category, and each category has its own name. Stock contains specific clothing types like Smockback dresses, Denim skirts and so on, while the categories tells whether a stock is a skirt, dress, pants and so on. Each stock has its own description that tells about the clothing’s color and design together with the topline that tells about where to wear it. All stock also differ from its price along with the photo containing each row of each stock.
 
-![image](https://user-images.githubusercontent.com/73202856/103324269-c28a1d00-4a81-11eb-9f65-046df58f9b82.png)
+![image](https://user-images.githubusercontent.com/73202856/103342484-8a57fe00-4ac4-11eb-86ea-d46f84bee555.png)
 
 Database source is from Phil Adams in his youtube video tutorials on how to create a dynamic site using PHP and mySQL.
 
